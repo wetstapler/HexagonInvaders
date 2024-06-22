@@ -1,0 +1,54 @@
+{
+	"name": "TitleCard",
+	"plugin-id": "Sprite",
+	"sid": 854908792988684,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 900,
+						"height": 300,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 9476496,
+						"collisionPoly": {
+							"points": [
+								0.2733333333333333,
+								0.16666666666666666,
+								0.7622222222222222,
+								0.17,
+								0.82,
+								0.54,
+								0.8044444444444444,
+								0.72,
+								0.4033333333333333,
+								0.72,
+								0.17777777777777778,
+								0.68
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 479613455817322,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

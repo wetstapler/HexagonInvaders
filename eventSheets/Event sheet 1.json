@@ -1,0 +1,895 @@
+{
+	"name": "Event sheet 1",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "worldRotRate",
+			"type": "number",
+			"initialValue": "10",
+			"comment": "the speed of the world rotation in deg/sec",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 786309471631548
+		},
+		{
+			"eventType": "variable",
+			"name": "changeTimer",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "counts time up until changeTimerLimit",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 545705991003802
+		},
+		{
+			"eventType": "variable",
+			"name": "worldRotSpeedMin",
+			"type": "number",
+			"initialValue": "10",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 713231956323315
+		},
+		{
+			"eventType": "variable",
+			"name": "difficultyTimer",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 303576519896804
+		},
+		{
+			"eventType": "variable",
+			"name": "gameover",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 974753074877891
+		},
+		{
+			"eventType": "variable",
+			"name": "difficultyTimerLimit",
+			"type": "number",
+			"initialValue": "15",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 124316215129713
+		},
+		{
+			"eventType": "variable",
+			"name": "hiScore",
+			"type": "number",
+			"initialValue": "1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 628990070138350
+		},
+		{
+			"eventType": "variable",
+			"name": "difficulty",
+			"type": "number",
+			"initialValue": "1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 258824428084988
+		},
+		{
+			"eventType": "variable",
+			"name": "changeTimerLimit",
+			"type": "number",
+			"initialValue": "5",
+			"comment": "how many seconds until the world changes directions",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 292162450142786
+		},
+		{
+			"eventType": "variable",
+			"name": "worldRotSpeedMax",
+			"type": "number",
+			"initialValue": "25",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 131295635435028
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 254810202073285
+				}
+			],
+			"actions": [],
+			"sid": 563043041588893,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 849911849294195,
+							"parameters": {
+								"variable": "gameover"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-layer-angle",
+							"objectClass": "System",
+							"sid": 503695803405807,
+							"parameters": {
+								"layer": "0",
+								"angle": "LayerAngle(0) + (dt * worldRotRate)"
+							}
+						},
+						{
+							"id": "add-to-instvar",
+							"objectClass": "Player",
+							"sid": 568576541813013,
+							"parameters": {
+								"instance-variable": "playerAngle",
+								"value": "(Player.Joy1 * dt * Player.speed)"
+							}
+						},
+						{
+							"id": "set-angle",
+							"objectClass": "Player",
+							"sid": 815575412320627,
+							"parameters": {
+								"angle": "-Player.playerAngle"
+							}
+						},
+						{
+							"id": "set-position",
+							"objectClass": "Player",
+							"sid": 786504039784990,
+							"parameters": {
+								"x": "Center.X + cos(Player.playerAngle) * Player.radius",
+								"y": "Center.Y - sin(Player.playerAngle) * Player.radius"
+							}
+						},
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 249723278813680,
+							"parameters": {
+								"variable": "changeTimer",
+								"value": "dt"
+							}
+						},
+						{
+							"id": "add-to-instvar",
+							"objectClass": "EnemySpawner",
+							"sid": 527804940641140,
+							"parameters": {
+								"instance-variable": "spawnTimer",
+								"value": "dt"
+							}
+						},
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 956862454886906,
+							"parameters": {
+								"variable": "difficultyTimer",
+								"value": "dt"
+							}
+						},
+						{
+							"id": "add-to-instvar",
+							"objectClass": "Player",
+							"sid": 342253404429126,
+							"parameters": {
+								"instance-variable": "fireTimer",
+								"value": "dt"
+							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "Enemy",
+							"sid": 887110550703652,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "Enemy.speedMax * (distance(Enemy.X, Enemy.Y, Center.X, Center.Y) / EnemySpawner.spawnRadius) + 1"
+							}
+						},
+						{
+							"id": "set-scale",
+							"objectClass": "Enemy",
+							"sid": 596890694608153,
+							"parameters": {
+								"scale": "2 * ((distance(Enemy.X, Enemy.Y, Center.X, Center.Y) / EnemySpawner.spawnRadius) + 1)^2"
+							}
+						}
+					],
+					"sid": 865229487782002
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 744873523105668,
+							"parameters": {
+								"variable": "gameover"
+							}
+						},
+						{
+							"id": "compare-opacity",
+							"objectClass": "Fadeout",
+							"sid": 918226065429474,
+							"parameters": {
+								"comparison": 2,
+								"opacity": "90"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-opacity",
+							"objectClass": "Fadeout",
+							"sid": 282447835915159,
+							"parameters": {
+								"opacity": "lerp(0, 100, ((Fadeout.Opacity + dt * 50) / 100))"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 255302773268195,
+							"parameters": {
+								"variable": "worldRotRate",
+								"value": "lerp(worldRotSpeedMax ,-(worldRotSpeedMax * 0.1) ,((Fadeout.Opacity + dt * 100) / 100))"
+							}
+						},
+						{
+							"id": "set-opacity",
+							"objectClass": "RestartPrompt",
+							"sid": 681812009303325,
+							"parameters": {
+								"opacity": "Fadeout.Opacity + 10"
+							}
+						},
+						{
+							"id": "set-position",
+							"objectClass": "TitleCard",
+							"sid": 111961235109269,
+							"parameters": {
+								"x": "TitleCard.X",
+								"y": "lerp(-150, 160, ((Fadeout.Opacity + 10) / 100))"
+							}
+						}
+					],
+					"sid": 772328067569454
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 196690402130020,
+					"parameters": {
+						"variable": "changeTimer",
+						"comparison": 5,
+						"value": "changeTimerLimit"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 650144872277860,
+					"parameters": {
+						"variable": "worldRotRate",
+						"value": "random(worldRotSpeedMin, worldRotSpeedMax) * choose(-1,1)"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 829703544389074,
+					"parameters": {
+						"variable": "changeTimer",
+						"value": "0"
+					}
+				}
+			],
+			"sid": 409291166585471
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Player",
+					"sid": 586652321978416,
+					"parameters": {
+						"instance-variable": "playerAngle",
+						"comparison": 4,
+						"value": "360"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "add-to-instvar",
+					"objectClass": "Player",
+					"sid": 287938163830527,
+					"parameters": {
+						"instance-variable": "playerAngle",
+						"value": "-360"
+					}
+				}
+			],
+			"sid": 535893856426483
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Player",
+					"sid": 917420221473849,
+					"parameters": {
+						"instance-variable": "playerAngle",
+						"comparison": 2,
+						"value": "-360"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "add-to-instvar",
+					"objectClass": "Player",
+					"sid": 867271974974915,
+					"parameters": {
+						"instance-variable": "playerAngle",
+						"value": "360"
+					}
+				}
+			],
+			"sid": 439657781669800
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "EnemySpawner",
+					"sid": 338924658002632,
+					"parameters": {
+						"instance-variable": "spawnTimer",
+						"comparison": 5,
+						"value": "EnemySpawner.spawnTimerLimit"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "EnemySpawner",
+					"sid": 464584622309145,
+					"parameters": {
+						"instance-variable": "spawnAngle",
+						"value": "random(0,359)"
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 218042031039564,
+					"parameters": {
+						"object-to-create": "Enemy",
+						"layer": "0",
+						"x": "Center.X + cos(EnemySpawner.spawnAngle) * EnemySpawner.spawnRadius",
+						"y": "Center.Y + sin(EnemySpawner.spawnAngle) * EnemySpawner.spawnRadius",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-angle-toward-position",
+					"objectClass": "Enemy",
+					"sid": 649658854927444,
+					"parameters": {
+						"x": "Center.X",
+						"y": "Center.Y"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "EnemySpawner",
+					"sid": 818225160565903,
+					"parameters": {
+						"instance-variable": "spawnTimer",
+						"value": "0"
+					}
+				}
+			],
+			"sid": 862368284421986
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 687829525357656,
+					"parameters": {
+						"variable": "difficultyTimer",
+						"comparison": 5,
+						"value": "difficultyTimerLimit"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 547655616174780,
+					"parameters": {
+						"variable": "difficulty",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 182777425461570,
+					"parameters": {
+						"variable": "difficultyTimer",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "Difficulty",
+					"sid": 313896944975409,
+					"parameters": {
+						"text": "\"Difficulty: \" & str(difficulty)"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "EnemySpawner",
+					"sid": 882767582039602,
+					"parameters": {
+						"instance-variable": "spawnTimerLimit",
+						"value": "EnemySpawner.spawnTimerLimit * 0.75"
+					}
+				}
+			],
+			"sid": 802571475182318,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 748379024126827,
+							"parameters": {
+								"variable": "difficulty",
+								"comparison": 4,
+								"value": "hiScore"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 629542223159977,
+							"parameters": {
+								"variable": "hiScore",
+								"value": "difficulty"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "HiScore",
+							"sid": 883586060933016,
+							"parameters": {
+								"text": "\"Hi-Score: \" & str(hiScore)"
+							}
+						}
+					],
+					"sid": 809273003614593
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Player",
+					"sid": 301439945550542,
+					"parameters": {
+						"instance-variable": "fireTimer",
+						"comparison": 5,
+						"value": "Player.fireTimerLimit"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "spawn-another-object",
+					"objectClass": "Player",
+					"sid": 309625805592550,
+					"parameters": {
+						"object": "Bullet",
+						"layer": "0",
+						"image-point": "1",
+						"create-hierarchy": false
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 293413779928276,
+					"parameters": {
+						"instance-variable": "fireTimer",
+						"value": "0"
+					}
+				}
+			],
+			"sid": 821776201748263
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 427368123917505,
+					"parameters": {
+						"key": 65
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "add-to-instvar",
+					"objectClass": "Player",
+					"sid": 984064096429221,
+					"parameters": {
+						"instance-variable": "Joy1",
+						"value": "1"
+					}
+				}
+			],
+			"sid": 472934675186948
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-released",
+					"objectClass": "Keyboard",
+					"sid": 193997773041635,
+					"parameters": {
+						"key": 65
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "add-to-instvar",
+					"objectClass": "Player",
+					"sid": 804786102585316,
+					"parameters": {
+						"instance-variable": "Joy1",
+						"value": "-1"
+					}
+				}
+			],
+			"sid": 441302167190080
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 113623983048272,
+					"parameters": {
+						"key": 68
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "add-to-instvar",
+					"objectClass": "Player",
+					"sid": 429417210895649,
+					"parameters": {
+						"instance-variable": "Joy1",
+						"value": "-1"
+					}
+				}
+			],
+			"sid": 420052214768877
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-released",
+					"objectClass": "Keyboard",
+					"sid": 673297928524392,
+					"parameters": {
+						"key": 68
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "add-to-instvar",
+					"objectClass": "Player",
+					"sid": 397168300774056,
+					"parameters": {
+						"instance-variable": "Joy1",
+						"value": "1"
+					}
+				}
+			],
+			"sid": 916065638094706
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-visible",
+					"objectClass": "Bullet",
+					"sid": 707703843259511,
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"id": "destroy",
+					"objectClass": "Bullet",
+					"sid": 268385027353166
+				}
+			],
+			"sid": 884812055453176
+		},
+		{
+			"eventType": "block",
+			"conditions": [],
+			"actions": [],
+			"sid": 599084347261377
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Bullet",
+					"sid": 132326437507769,
+					"parameters": {
+						"object": "Enemy"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "destroy",
+					"objectClass": "Enemy",
+					"sid": 453567017657854
+				},
+				{
+					"id": "destroy",
+					"objectClass": "Bullet",
+					"sid": 448724135661028
+				}
+			],
+			"sid": 119000219186254
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Enemy",
+					"sid": 915788003695598,
+					"parameters": {
+						"object": "Center"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 206850678465562,
+					"parameters": {
+						"variable": "gameover",
+						"value": "true"
+					}
+				},
+				{
+					"id": "destroy",
+					"objectClass": "Enemy",
+					"sid": 591385966595399
+				},
+				{
+					"id": "add-filter-effect",
+					"objectClass": "Audio",
+					"sid": 667327837227359,
+					"parameters": {
+						"tag": "\"music\"",
+						"type": "low-pass",
+						"frequency": "600",
+						"detune": "0",
+						"q": "1",
+						"gain": "0",
+						"mix": "100"
+					}
+				}
+			],
+			"sid": 841524117645854
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 672102494193678,
+					"parameters": {
+						"key": 32
+					}
+				}
+			],
+			"actions": [],
+			"sid": 856276596171747,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 375960149254024,
+							"parameters": {
+								"variable": "gameover"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "restart-layout",
+							"objectClass": "System",
+							"sid": 580241748233571
+						},
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 610775232588288,
+							"parameters": {
+								"variable": "gameover",
+								"value": "false"
+							}
+						},
+						{
+							"id": "set-opacity",
+							"objectClass": "Fadeout",
+							"sid": 406508105318706,
+							"parameters": {
+								"opacity": "0"
+							}
+						},
+						{
+							"id": "set-opacity",
+							"objectClass": "RestartPrompt",
+							"sid": 336696286608009,
+							"parameters": {
+								"opacity": "0"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 499236700046018,
+							"parameters": {
+								"variable": "worldRotRate",
+								"value": "10"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 316245487484131,
+							"parameters": {
+								"variable": "difficulty",
+								"value": "1"
+							}
+						},
+						{
+							"id": "remove-all-effects",
+							"objectClass": "Audio",
+							"sid": 322477351074339,
+							"parameters": {
+								"tag": "\"music\""
+							}
+						}
+					],
+					"sid": 141169261865719,
+					"isOrBlock": true
+				}
+			],
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 143520946939211
+				}
+			],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "HiScore",
+					"sid": 307326182698144,
+					"parameters": {
+						"text": "\"Hi-Score: \" & str(hiScore)"
+					}
+				}
+			],
+			"sid": 600950049606426,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-any-playing",
+							"objectClass": "Audio",
+							"sid": 131056996388151,
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 104558108736028,
+							"parameters": {
+								"audio-file": "The Song",
+								"loop": "looping",
+								"volume": "0",
+								"stereo-pan": "0",
+								"tag-optional": "\"music\""
+							}
+						}
+					],
+					"sid": 236326226253301
+				}
+			]
+		}
+	],
+	"sid": 907050544065206
+}
