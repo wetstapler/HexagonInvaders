@@ -1,0 +1,20 @@
+{
+	"name": "EmptyShell",
+	"plugin-id": "skymen_Shell",
+	"sid": 585189047970548,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Fade",
+			"name": "Fade",
+			"sid": 419568114303566
+		},
+		{
+			"behaviorId": "Sin",
+			"name": "Sine",
+			"sid": 241921867004966
+		}
+	],
+	"effectTypes": []
+}

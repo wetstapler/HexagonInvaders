@@ -1,0 +1,158 @@
+{
+	"name": "BossRingOL",
+	"plugin-id": "Sprite",
+	"sid": 834448000967319,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "damage",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 945357666999606
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Bullet",
+			"name": "Bullet",
+			"sid": 823457092753876
+		},
+		{
+			"behaviorId": "Timer",
+			"name": "Timer",
+			"sid": 368138277231595
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 256,
+						"height": 256,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 7610237,
+						"collisionPoly": {
+							"points": [
+								0.3333333333333333,
+								0,
+								0.6666666666666666,
+								0,
+								0.8,
+								0.06666666666666667,
+								0.9333333333333333,
+								0.2,
+								1,
+								0.3333333333333333,
+								1,
+								0.6666666666666666,
+								0.9333333333333333,
+								0.8,
+								0.8,
+								0.9333333333333333,
+								0.6666666666666666,
+								1,
+								0.3333333333333333,
+								1,
+								0.2,
+								0.9333333333333333,
+								0.06666666666666667,
+								0.8,
+								0,
+								0.6666666666666666,
+								0,
+								0.3333333333333333,
+								0.06666666666666667,
+								0.2,
+								0.2,
+								0.06666666666666667
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": "enemy_normal"
+					},
+					{
+						"width": 15,
+						"height": 15,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 2038830,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": "wide_shot"
+					},
+					{
+						"width": 15,
+						"height": 15,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 4297706,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": "rapid_shot"
+					},
+					{
+						"width": 15,
+						"height": 15,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 21636,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": "rapid_shot"
+					},
+					{
+						"width": 15,
+						"height": 15,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 7073966,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": "rapid_shot"
+					},
+					{
+						"width": 15,
+						"height": 15,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 7391493,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": "rapid_shot"
+					}
+				],
+				"sid": 759552327336498,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			}
+		],
+		"subfolders": []
+	}
+}

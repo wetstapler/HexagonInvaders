@@ -1,0 +1,18 @@
+{
+	"name": "PokiSDK",
+	"plugin-id": "Avix_PokiSDK_ForC3",
+	"sid": 143619581463330,
+	"singleglobal-inst": {
+		"type": "PokiSDK",
+		"properties": {
+			"poki-enabled": true,
+			"debug-on-preview": true,
+			"loading-notification": "immediate",
+			"automatic-suspend": true,
+			"prevent-scroll": true,
+			"adblock-sim": false,
+			"suspend-timeout": 0
+		},
+		"uid": 50
+	}
+}

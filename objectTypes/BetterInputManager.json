@@ -1,0 +1,15 @@
+{
+	"name": "BetterInputManager",
+	"plugin-id": "skymen_better_input_manager",
+	"sid": 144698980656755,
+	"singleglobal-inst": {
+		"type": "BetterInputManager",
+		"properties": {
+			"default-axis-deadzone": 0.2,
+			"default-joystick-deadzone": 0.2,
+			"default-control-scheme": "",
+			"auto-switch-control-scheme": true
+		},
+		"uid": 16
+	}
+}

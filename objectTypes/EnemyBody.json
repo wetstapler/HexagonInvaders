@@ -1,0 +1,52 @@
+{
+	"name": "EnemyBody",
+	"plugin-id": "Sprite",
+	"sid": 186477071953320,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "spinSpeed",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 815886222276247
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Pin",
+			"name": "Pin",
+			"sid": 784190863786396
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 256,
+						"height": 256,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 456560,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 572689978918529,
+				"name": "Default",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

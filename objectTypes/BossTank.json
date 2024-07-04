@@ -1,0 +1,79 @@
+{
+	"name": "BossTank",
+	"plugin-id": "Sprite",
+	"sid": 163274241543998,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "damage",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 462135554668188
+		},
+		{
+			"name": "beatCount",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 106409967524241
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Bullet",
+			"name": "Bullet",
+			"sid": 996685514850224
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 256,
+						"height": 256,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 5446286,
+						"collisionPoly": {
+							"points": [
+								0.11000000000000004,
+								0.17400000000000007,
+								0.498,
+								0.009000000000000053,
+								0.8939999999999999,
+								0.17600000000000007,
+								1,
+								0.494,
+								0.8899999999999999,
+								0.8439999999999999,
+								0.5119999999999999,
+								1,
+								0.11599999999999999,
+								0.8399999999999999,
+								0,
+								0.507
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 447840131749715,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

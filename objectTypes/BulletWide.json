@@ -1,0 +1,83 @@
+{
+	"name": "BulletWide",
+	"plugin-id": "Sprite",
+	"sid": 506182979992657,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "damage",
+			"type": "number",
+			"desc": "how many enemies this projectile has hit",
+			"show": true,
+			"sid": 160771347479047
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Bullet",
+			"name": "Bullet",
+			"sid": 419795108682712
+		},
+		{
+			"behaviorId": "Timer",
+			"name": "Timer",
+			"sid": 535405610467813
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 256,
+						"height": 256,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 2485760,
+						"collisionPoly": {
+							"points": [
+								0.27734375,
+								0.015625,
+								0.45703125,
+								0.015625,
+								0.83203125,
+								0.13671875,
+								0.94140625,
+								0.27734375,
+								0.98046875,
+								0.54296875,
+								0.90234375,
+								0.7890625,
+								0.80078125,
+								0.8828125,
+								0.48046875,
+								0.9765625,
+								0.24609375,
+								0.9765625,
+								0.02734375,
+								0.91796875,
+								0.03515625,
+								0.0703125
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 459645488028232,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

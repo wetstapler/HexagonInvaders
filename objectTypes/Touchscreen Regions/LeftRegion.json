@@ -1,0 +1,56 @@
+{
+	"name": "LeftRegion",
+	"plugin-id": "Sprite",
+	"sid": 435709128440554,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 632,
+						"height": 632,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 1994761,
+						"collisionPoly": {
+							"points": [
+								0,
+								0.18037974683544294,
+								0.11985759493670887,
+								0.14398734177215183,
+								0.16376582278481008,
+								0,
+								0.32753164556962017,
+								0,
+								0.3236995648734179,
+								0.8377422863924043,
+								0.4225301621835446,
+								0.9975894976265823,
+								0,
+								1
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 693246278051312,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

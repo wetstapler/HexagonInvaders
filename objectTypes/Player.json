@@ -28,7 +28,7 @@
 		{
 			"name": "speed",
 			"type": "number",
-			"desc": "",
+			"desc": "degrees per second",
 			"show": true,
 			"sid": 507438543139848
 		},
@@ -45,23 +45,43 @@
 			"desc": "the length between shots",
 			"show": true,
 			"sid": 361918380780761
+		},
+		{
+			"name": "Powerup",
+			"type": "string",
+			"desc": "tag for powerups",
+			"show": true,
+			"sid": 122285921903336
+		},
+		{
+			"name": "clone",
+			"type": "boolean",
+			"desc": "",
+			"show": true,
+			"sid": 673781725189694
 		}
 	],
-	"behaviorTypes": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Timer",
+			"name": "Timer",
+			"sid": 729451188158464
+		}
+	],
 	"effectTypes": [],
 	"animations": {
 		"items": [
 			{
 				"frames": [
 					{
-						"width": 250,
-						"height": 250,
+						"width": 256,
+						"height": 256,
 						"originX": 0.996,
 						"originY": 0.472,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
-						"imageSpriteId": 4203271,
+						"imageSpriteId": 5726095,
 						"collisionPoly": {
 							"points": [
 								1,

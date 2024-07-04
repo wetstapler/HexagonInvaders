@@ -1,10 +1,10 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 37900,
+	"savedWithRelease": 39700,
 	"name": "Centripetal Armed Forces",
 	"runtime": "c3",
 	"useWorker": "auto",
-	"bundleAddons": false,
+	"bundleAddons": true,
 	"usedAddons": [
 		{
 			"type": "plugin",
@@ -15,8 +15,30 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Avix_PokiSDK_ForC3",
+			"name": "Poki SDK",
+			"author": "Avix Games",
+			"bundled": true,
+			"version": "1.0.2.1"
+		},
+		{
+			"type": "plugin",
 			"id": "Keyboard",
 			"name": "Keyboard",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Mouse",
+			"name": "Mouse",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "SVGPicture",
+			"name": "SVG Picture",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -35,9 +57,88 @@
 			"bundled": false
 		},
 		{
+			"type": "plugin",
+			"id": "Touch",
+			"name": "Touch",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "gamepad",
+			"name": "Gamepad",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "skymen_Shell",
+			"name": "Empty Shell",
+			"author": "skymen",
+			"bundled": true,
+			"version": "1.0.0.6"
+		},
+		{
+			"type": "plugin",
+			"id": "skymen_better_input_manager",
+			"name": "Better Input Manager",
+			"author": "skymen",
+			"bundled": true,
+			"version": "1.0.0.3"
+		},
+		{
 			"type": "behavior",
 			"id": "Bullet",
 			"name": "Bullet",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Fade",
+			"name": "Fade",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Pin",
+			"name": "Pin",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Sin",
+			"name": "Sine",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Timer",
+			"name": "Timer",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Tween",
+			"name": "Tween",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "glowhorizontal",
+			"name": "Glow horizontal",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "glowvertical",
+			"name": "Glow vertical",
 			"author": "Scirra",
 			"bundled": false
 		}
@@ -52,14 +153,74 @@
 			"Bullet",
 			"EnemySpawner",
 			"Enemy",
-			"Difficulty",
+			"Timer",
 			"Fadeout",
 			"RestartPrompt",
 			"TitleCard",
 			"HiScore",
-			"Audio"
+			"Audio",
+			"TimerHandler",
+			"BetterInputManager",
+			"BulletWide",
+			"Shield",
+			"Mouse",
+			"BossTank",
+			"BossRing",
+			"BossFast",
+			"BossRingOL",
+			"BossTankOL",
+			"BossFastOL",
+			"Check",
+			"PlayerSprite",
+			"EnemyFace",
+			"EnemyBody",
+			"EmptyShell",
+			"LevelSelect",
+			"MainScreen",
+			"LevelLabel",
+			"Touch",
+			"Gameover",
+			"Gamepad",
+			"PokiSDK",
+			"BeatIndicator"
 		],
-		"subfolders": []
+		"subfolders": [
+			{
+				"items": [
+					"Options",
+					"Play",
+					"Level1",
+					"Level2",
+					"Level3",
+					"Level4",
+					"Level5",
+					"Level6",
+					"BackToMain",
+					"BossPreviewer",
+					"Lock"
+				],
+				"subfolders": [],
+				"name": "Menu Assets"
+			},
+			{
+				"items": [
+					"CenterRegion",
+					"LeftRegion",
+					"RightRegion",
+					"BackRegion"
+				],
+				"subfolders": [],
+				"name": "Touchscreen Regions"
+			},
+			{
+				"items": [
+					"Planet",
+					"PlanetHalf"
+				],
+				"subfolders": [],
+				"name": "Planet"
+			}
+		]
 	},
 	"autosaveData": null,
 	"containers": [],
@@ -69,19 +230,31 @@
 	},
 	"layouts": {
 		"items": [
-			"Layout 1"
+			"Layout 1",
+			"objectRepository",
+			"MenuProto"
 		],
 		"subfolders": []
 	},
 	"eventSheets": {
 		"items": [
-			"Event sheet 1"
+			"Event sheet 1",
+			"MenuProto"
 		],
 		"subfolders": []
 	},
 	"rootFileFolders": {
 		"script": {
-			"items": [],
+			"items": [
+				{
+					"name": "Patterns.js",
+					"type": "application/javascript",
+					"sid": 145173332511905,
+					"script-info": {
+						"purpose": "main"
+					}
+				}
+			],
 			"subfolders": []
 		},
 		"sound": {
@@ -102,6 +275,38 @@
 					"name": "The Song.webm",
 					"type": "audio/webm; codecs=opus",
 					"sid": 497112871482664,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "temporal(150).webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 289900677935563,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "temporal(160).webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 438628790531443,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "temporal(120).webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 533344992093446,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "temporal(140).webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 937932221444224,
 					"file-info": {
 						"purpose": "none"
 					}
@@ -179,7 +384,24 @@
 			"subfolders": []
 		},
 		"general": {
-			"items": [],
+			"items": [
+				{
+					"name": "rocket.svg",
+					"type": "image/svg+xml",
+					"sid": 418540683926395,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "enemy_eye.svg",
+					"type": "image/svg+xml",
+					"sid": 213704811340671,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
 			"subfolders": []
 		}
 	},
@@ -236,7 +458,6 @@
 		"gpuPreference": "high-performance",
 		"scriptsType": "module",
 		"framerateMode": "vsync",
-		"compositingMode": "standard",
 		"sampling": "nearest",
 		"downscaling": "medium",
 		"renderingMode": "auto",

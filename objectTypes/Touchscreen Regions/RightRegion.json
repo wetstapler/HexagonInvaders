@@ -1,0 +1,52 @@
+{
+	"name": "RightRegion",
+	"plugin-id": "Sprite",
+	"sid": 413064322122674,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 632,
+						"height": 632,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 4299016,
+						"collisionPoly": {
+							"points": [
+								0.6467563291139242,
+								0,
+								1,
+								0,
+								1,
+								1,
+								0.5559731012658228,
+								1,
+								0.6562500000000003,
+								0.8413765822784799
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 949438358288243,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

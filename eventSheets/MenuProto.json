@@ -1,0 +1,627 @@
+{
+	"name": "MenuProto",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "LevelSelected",
+			"type": "number",
+			"initialValue": "1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 536719087873481
+		},
+		{
+			"eventType": "variable",
+			"name": "MenuMoving",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "-1 for left, 1 for right, 0 for stopped",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 889613935046807
+		},
+		{
+			"eventType": "variable",
+			"name": "BossPreviewOffset",
+			"type": "number",
+			"initialValue": "650",
+			"comment": "how far away from the center the preview needs to get before changing",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 383754077461583
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 607036550344728
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 873145268155145,
+					"parameters": {
+						"variable": "LevelSelected",
+						"value": "1"
+					}
+				}
+			],
+			"sid": 562109986373262,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 104772144250458,
+							"parameters": {
+								"variable": "level",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 645176590284510,
+							"parameters": {
+								"object-to-create": "EnemyBody",
+								"layer": "\"LevelSelector\"",
+								"x": "BossPreviewer.X",
+								"y": "BossPreviewer.Y",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "pin-to-object-properties",
+							"objectClass": "EnemyBody",
+							"sid": 901657824269631,
+							"behaviorType": "Pin",
+							"parameters": {
+								"pin-to": "BossPreviewer",
+								"x": true,
+								"y": true,
+								"angle": false,
+								"width-type": "no",
+								"height-type": "no",
+								"z": false
+							}
+						},
+						{
+							"id": "move-to-object",
+							"objectClass": "EnemyBody",
+							"sid": 250560720563987,
+							"parameters": {
+								"where": "behind",
+								"object": "BossPreviewer"
+							}
+						}
+					],
+					"sid": 661943784635764
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 664526141770992,
+					"parameters": {
+						"key": 68
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 506648549648274,
+					"parameters": {
+						"variable": "LevelSelected",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 536398246153406,
+					"parameters": {
+						"variable": "MenuMoving",
+						"value": "-1"
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "BossPreviewer",
+					"sid": 545670801893421,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"right\"",
+						"property": "offsetX",
+						"end-value": "Self.X + (BossPreviewOffset * MenuMoving)",
+						"time": "0.5",
+						"ease": "easeincubic",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				}
+			],
+			"sid": 334645628295233,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 394118680523940,
+							"parameters": {
+								"variable": "LevelSelected",
+								"comparison": 4,
+								"value": "6"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 755716197045348,
+							"parameters": {
+								"variable": "LevelSelected",
+								"value": "1"
+							}
+						}
+					],
+					"sid": 274930486624362
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 184456816800493,
+					"parameters": {
+						"key": 65
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 241549305412069,
+					"parameters": {
+						"variable": "LevelSelected",
+						"value": "-1"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 433583031398741,
+					"parameters": {
+						"variable": "MenuMoving",
+						"value": "1"
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "BossPreviewer",
+					"sid": 478899871626581,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"left\"",
+						"property": "offsetX",
+						"end-value": "Self.X + (BossPreviewOffset * MenuMoving)",
+						"time": "0.5",
+						"ease": "easeincubic",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				}
+			],
+			"sid": 822520072184916,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 158263414111546,
+							"parameters": {
+								"variable": "LevelSelected",
+								"comparison": 2,
+								"value": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 926884478692720,
+							"parameters": {
+								"variable": "LevelSelected",
+								"value": "6"
+							}
+						}
+					],
+					"sid": 820870238613520
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tweens-finished",
+					"objectClass": "BossPreviewer",
+					"sid": 687434641697693,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"left\""
+					}
+				},
+				{
+					"id": "is-on-screen",
+					"objectClass": "BossPreviewer",
+					"sid": 149280621365782,
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"id": "set-position",
+					"objectClass": "BossPreviewer",
+					"sid": 911654610424049,
+					"parameters": {
+						"x": "Center.X - BossPreviewOffset",
+						"y": "Self.Y"
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "BossPreviewer",
+					"sid": 296329988239246,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"left\"",
+						"property": "offsetX",
+						"end-value": "Self.X + (BossPreviewOffset * MenuMoving)",
+						"time": "0.5",
+						"ease": "easeincubic",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "BossPreviewer",
+					"sid": 685972823545284,
+					"parameters": {
+						"frame-number": "LevelSelected - 1"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "LevelLabel",
+					"sid": 650029731058819,
+					"parameters": {
+						"text": "\"Level \" & str(LevelSelected)"
+					}
+				}
+			],
+			"sid": 348910259852592
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tweens-finished",
+					"objectClass": "BossPreviewer",
+					"sid": 214486173475460,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"right\""
+					}
+				},
+				{
+					"id": "is-on-screen",
+					"objectClass": "BossPreviewer",
+					"sid": 834032056719464,
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"id": "set-position",
+					"objectClass": "BossPreviewer",
+					"sid": 247961166271951,
+					"parameters": {
+						"x": "Center.X + BossPreviewOffset",
+						"y": "Self.Y"
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "BossPreviewer",
+					"sid": 880210084154549,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"right\"",
+						"property": "offsetX",
+						"end-value": "Self.X + (BossPreviewOffset * MenuMoving)",
+						"time": "0.5",
+						"ease": "easeincubic",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "BossPreviewer",
+					"sid": 504236256168221,
+					"parameters": {
+						"frame-number": "LevelSelected - 1"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "LevelLabel",
+					"sid": 890464303028025,
+					"parameters": {
+						"text": "\"Level \" & str(LevelSelected)"
+					}
+				}
+			],
+			"sid": 606843483184106
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 148968987724873,
+					"parameters": {
+						"key": 32
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "restart-layout",
+					"objectClass": "System",
+					"sid": 228794753299062
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 124705653608269,
+					"parameters": {
+						"variable": "level",
+						"value": "LevelSelected"
+					}
+				},
+				{
+					"type": "script",
+					"script": "failStreak = 0;"
+				}
+			],
+			"sid": 306906276479467,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 612529864390102,
+							"parameters": {
+								"variable": "level",
+								"comparison": 0,
+								"value": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 615119789405740,
+							"parameters": {
+								"variable": "BPM",
+								"value": "Song1BPM"
+							}
+						},
+						{
+							"type": "script",
+							"script": "intensityModifier = 0;"
+						}
+					],
+					"sid": 293458625608235
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 492445552869136,
+							"parameters": {
+								"variable": "level",
+								"comparison": 0,
+								"value": "2"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 368871513486726,
+							"parameters": {
+								"variable": "BPM",
+								"value": "Song2BPM"
+							}
+						},
+						{
+							"type": "script",
+							"script": "intensityModifier = 0;"
+						}
+					],
+					"sid": 139190578676226
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 772731938290596,
+							"parameters": {
+								"variable": "level",
+								"comparison": 0,
+								"value": "3"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 667518838100416,
+							"parameters": {
+								"variable": "BPM",
+								"value": "Song3BPM"
+							}
+						},
+						{
+							"type": "script",
+							"script": "intensityModifier = 0;"
+						}
+					],
+					"sid": 799856963754414
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 808534475824086,
+							"parameters": {
+								"variable": "level",
+								"comparison": 0,
+								"value": "4"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 531432159050217,
+							"parameters": {
+								"variable": "BPM",
+								"value": "Song1BPM"
+							}
+						},
+						{
+							"type": "script",
+							"script": "intensityModifier = 25;"
+						}
+					],
+					"sid": 396645787555481
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 494839090586191,
+							"parameters": {
+								"variable": "level",
+								"comparison": 0,
+								"value": "5"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 772494262503839,
+							"parameters": {
+								"variable": "BPM",
+								"value": "Song2BPM"
+							}
+						},
+						{
+							"type": "script",
+							"script": "intensityModifier = 25;"
+						}
+					],
+					"sid": 497092216111205
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 237226321132395,
+							"parameters": {
+								"variable": "level",
+								"comparison": 0,
+								"value": "6"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 604020542120270,
+							"parameters": {
+								"variable": "BPM",
+								"value": "Song3BPM"
+							}
+						},
+						{
+							"type": "script",
+							"script": "intensityModifier = 25;"
+						}
+					],
+					"sid": 664342452444597
+				}
+			]
+		}
+	],
+	"sid": 602885832548146
+}

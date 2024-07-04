@@ -31,9 +31,22 @@
 			"desc": "",
 			"show": true,
 			"sid": 319651023278004
+		},
+		{
+			"name": "beatCounter",
+			"type": "number",
+			"desc": "counts number of beats",
+			"show": true,
+			"sid": 705342162089182
 		}
 	],
-	"behaviorTypes": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Timer",
+			"name": "Timer",
+			"sid": 709185044383375
+		}
+	],
 	"effectTypes": [],
 	"animations": {
 		"items": [
