@@ -1,6 +1,6 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 39700,
+	"savedWithRelease": 40000,
 	"name": "Centripetal Armed Forces",
 	"runtime": "c3",
 	"useWorker": "auto",
@@ -37,6 +37,13 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Particles",
+			"name": "Particles",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "SVGPicture",
 			"name": "SVG Picture",
 			"author": "Scirra",
@@ -53,6 +60,13 @@
 			"type": "plugin",
 			"id": "Text",
 			"name": "Text",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "TiledBg",
+			"name": "Tiled Background",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -130,6 +144,22 @@
 		},
 		{
 			"type": "effect",
+			"id": "Coolok_Glitch",
+			"name": "Glitch",
+			"author": "Coolok",
+			"bundled": true,
+			"version": "1.0.0.0"
+		},
+		{
+			"type": "effect",
+			"id": "federicoCalchera_ColorVignette",
+			"name": "Color Vignette",
+			"author": "Federico Calchera",
+			"bundled": true,
+			"version": "1.0.0.0"
+		},
+		{
+			"type": "effect",
 			"id": "glowhorizontal",
 			"name": "Glow horizontal",
 			"author": "Scirra",
@@ -141,6 +171,21 @@
 			"name": "Glow vertical",
 			"author": "Scirra",
 			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "setcolor",
+			"name": "Set color",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "skymen_DropShadow",
+			"name": "DropShadow",
+			"author": "skymen, Federico Calchera",
+			"bundled": true,
+			"version": "2.1.0.0"
 		}
 	],
 	"uniqueId": "75amvrk58fk",
@@ -182,7 +227,9 @@
 			"Gameover",
 			"Gamepad",
 			"PokiSDK",
-			"BeatIndicator"
+			"BeatIndicator",
+			"enemyDeathParticles",
+			"TiledBackground"
 		],
 		"subfolders": [
 			{
@@ -238,8 +285,10 @@
 	},
 	"eventSheets": {
 		"items": [
-			"Event sheet 1",
-			"MenuProto"
+			"gameplay",
+			"MenuProto",
+			"conductor",
+			"InputMapping"
 		],
 		"subfolders": []
 	},
@@ -307,6 +356,14 @@
 					"name": "temporal(140).webm",
 					"type": "audio/webm; codecs=opus",
 					"sid": 937932221444224,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Tutorial.wav",
+					"type": "audio/wav",
+					"sid": 559905975865389,
 					"file-info": {
 						"purpose": "none"
 					}
@@ -458,7 +515,7 @@
 		"gpuPreference": "high-performance",
 		"scriptsType": "module",
 		"framerateMode": "vsync",
-		"sampling": "nearest",
+		"sampling": "bilinear",
 		"downscaling": "medium",
 		"renderingMode": "auto",
 		"anisotropicFiltering": "auto",

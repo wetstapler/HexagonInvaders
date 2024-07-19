@@ -10,6 +10,13 @@
 			"desc": "",
 			"show": true,
 			"sid": 815886222276247
+		},
+		{
+			"name": "isDead",
+			"type": "boolean",
+			"desc": "",
+			"show": true,
+			"sid": 644995203653413
 		}
 	],
 	"behaviorTypes": [
@@ -17,9 +24,19 @@
 			"behaviorId": "Pin",
 			"name": "Pin",
 			"sid": 784190863786396
+		},
+		{
+			"behaviorId": "Timer",
+			"name": "Timer",
+			"sid": 557461534869164
 		}
 	],
-	"effectTypes": [],
+	"effectTypes": [
+		{
+			"effectId": "setcolor",
+			"name": "SetColor"
+		}
+	],
 	"animations": {
 		"items": [
 			{

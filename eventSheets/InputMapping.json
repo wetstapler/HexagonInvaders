@@ -1,0 +1,347 @@
+{
+	"name": "InputMapping",
+	"events": [
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "inputMapping",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 351865084556887,
+							"parameters": {
+								"key": 65
+							}
+						},
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 845253578539770,
+							"parameters": {
+								"key": 81
+							}
+						},
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 720153997549554,
+							"parameters": {
+								"key": 37
+							}
+						},
+						{
+							"id": "is-touching-object",
+							"objectClass": "Touch",
+							"sid": 940191773182054,
+							"parameters": {
+								"object": "LeftRegion"
+							}
+						},
+						{
+							"id": "is-button-down",
+							"objectClass": "Gamepad",
+							"sid": 839390721721906,
+							"parameters": {
+								"gamepad": "0",
+								"button": "d-pad-left"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "SetDownInput",
+							"objectClass": "BetterInputManager",
+							"sid": 101592897541782,
+							"parameters": {
+								"name": "\"CCW\"",
+								"player": "Self.WireFrom(\"player\")",
+								"control-scheme": "\"keyboard\"",
+								"prevent-auto-switch": false
+							}
+						}
+					],
+					"sid": 979242584322975,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 744611803792328
+						}
+					],
+					"actions": [
+						{
+							"id": "SetUpInput",
+							"objectClass": "BetterInputManager",
+							"sid": 130436563032040,
+							"parameters": {
+								"name": "\"CCW\"",
+								"player": "Self.WireFrom(\"player\")",
+								"control-scheme": "\"keyboard\""
+							}
+						}
+					],
+					"sid": 778688955445203
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 455339764152637,
+							"parameters": {
+								"key": 68
+							}
+						},
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 453996836582110,
+							"parameters": {
+								"key": 39
+							}
+						},
+						{
+							"id": "is-touching-object",
+							"objectClass": "Touch",
+							"sid": 320696288537555,
+							"parameters": {
+								"object": "RightRegion"
+							}
+						},
+						{
+							"id": "is-button-down",
+							"objectClass": "Gamepad",
+							"sid": 643206199630275,
+							"parameters": {
+								"gamepad": "0",
+								"button": "d-pad-right"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "SetDownInput",
+							"objectClass": "BetterInputManager",
+							"sid": 528515351885466,
+							"parameters": {
+								"name": "\"CW\"",
+								"player": "Self.WireFrom(\"player\")",
+								"control-scheme": "\"keyboard\"",
+								"prevent-auto-switch": false
+							}
+						}
+					],
+					"sid": 631549420978796,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 170997396382955
+						}
+					],
+					"actions": [
+						{
+							"id": "SetUpInput",
+							"objectClass": "BetterInputManager",
+							"sid": 759882646708030,
+							"parameters": {
+								"name": "\"CW\"",
+								"player": "Self.WireFrom(\"player\")",
+								"control-scheme": "\"keyboard\""
+							}
+						}
+					],
+					"sid": 892598106607817
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 422058527721441,
+							"parameters": {
+								"key": 27
+							}
+						},
+						{
+							"id": "is-button-down",
+							"objectClass": "Gamepad",
+							"sid": 936428762291021,
+							"parameters": {
+								"gamepad": "0",
+								"button": "button-b"
+							}
+						},
+						{
+							"id": "is-touching-object",
+							"objectClass": "Touch",
+							"sid": 602279677854468,
+							"parameters": {
+								"object": "BackRegion"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "SetDownInput",
+							"objectClass": "BetterInputManager",
+							"sid": 431812484636733,
+							"parameters": {
+								"name": "\"back\"",
+								"player": "Self.WireFrom(\"player\")",
+								"control-scheme": "\"keyboard\"",
+								"prevent-auto-switch": false
+							}
+						}
+					],
+					"sid": 966903210217581,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 102603916308801
+						}
+					],
+					"actions": [
+						{
+							"id": "SetUpInput",
+							"objectClass": "BetterInputManager",
+							"sid": 215871870092790,
+							"parameters": {
+								"name": "\"back\"",
+								"player": "Self.WireFrom(\"player\")",
+								"control-scheme": "\"keyboard\""
+							}
+						}
+					],
+					"sid": 257107527329684
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 447235348437166,
+							"parameters": {
+								"key": 32
+							}
+						},
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 519388900914673,
+							"parameters": {
+								"key": 69
+							}
+						},
+						{
+							"id": "is-touching-object",
+							"objectClass": "Touch",
+							"sid": 748709026282868,
+							"parameters": {
+								"object": "CenterRegion"
+							}
+						},
+						{
+							"id": "is-button-down",
+							"objectClass": "Gamepad",
+							"sid": 592799202287449,
+							"parameters": {
+								"gamepad": "0",
+								"button": "button-a"
+							}
+						},
+						{
+							"id": "is-button-down",
+							"objectClass": "Gamepad",
+							"sid": 351997740985280,
+							"parameters": {
+								"gamepad": "0",
+								"button": "button-x"
+							}
+						},
+						{
+							"id": "is-button-down",
+							"objectClass": "Gamepad",
+							"sid": 325143577079376,
+							"parameters": {
+								"gamepad": "0",
+								"button": "button-y"
+							}
+						},
+						{
+							"id": "is-button-down",
+							"objectClass": "Gamepad",
+							"sid": 247595221720303,
+							"parameters": {
+								"gamepad": "0",
+								"button": "start-menu"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "SetDownInput",
+							"objectClass": "BetterInputManager",
+							"sid": 343864822998504,
+							"parameters": {
+								"name": "\"action\"",
+								"player": "Self.WireFrom(\"player\")",
+								"control-scheme": "\"\"",
+								"prevent-auto-switch": false
+							}
+						}
+					],
+					"sid": 702948022858400,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 507347379055324
+						}
+					],
+					"actions": [
+						{
+							"id": "SetUpInput",
+							"objectClass": "BetterInputManager",
+							"sid": 566001891531665,
+							"parameters": {
+								"name": "\"action\"",
+								"player": "Self.WireFrom(\"player\")",
+								"control-scheme": "\"\""
+							}
+						}
+					],
+					"sid": 598813310884210
+				}
+			],
+			"sid": 133807757132787
+		}
+	],
+	"sid": 853825527673394
+}

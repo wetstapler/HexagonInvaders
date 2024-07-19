@@ -3,7 +3,15 @@
 	"plugin-id": "Sprite",
 	"sid": 479804903879657,
 	"isGlobal": false,
-	"instanceVariables": [],
+	"instanceVariables": [
+		{
+			"name": "isDead",
+			"type": "boolean",
+			"desc": "",
+			"show": true,
+			"sid": 802140368559764
+		}
+	],
 	"behaviorTypes": [
 		{
 			"behaviorId": "Bullet",
@@ -11,7 +19,12 @@
 			"sid": 721941570283632
 		}
 	],
-	"effectTypes": [],
+	"effectTypes": [
+		{
+			"effectId": "setcolor",
+			"name": "SetColor"
+		}
+	],
 	"animations": {
 		"items": [
 			{

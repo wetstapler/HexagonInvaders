@@ -1,11 +1,19 @@
 {
-	"name": "Event sheet 1",
+	"name": "gameplay",
 	"events": [
+		{
+			"eventType": "include",
+			"includeSheet": "conductor"
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "InputMapping"
+		},
 		{
 			"eventType": "variable",
 			"name": "worldRotRate",
 			"type": "number",
-			"initialValue": "10",
+			"initialValue": "0",
 			"comment": "the speed of the world rotation in deg/sec",
 			"isStatic": false,
 			"isConstant": false,
@@ -15,11 +23,21 @@
 			"eventType": "variable",
 			"name": "worldRotSpeedMin",
 			"type": "number",
-			"initialValue": "10",
+			"initialValue": "0",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 713231956323315
+		},
+		{
+			"eventType": "variable",
+			"name": "worldRotSpeedMax",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 972330196393051
 		},
 		{
 			"eventType": "variable",
@@ -43,16 +61,6 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "beat",
-			"type": "number",
-			"initialValue": "0.46",
-			"comment": "time between beats",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 472592582986729
-		},
-		{
-			"eventType": "variable",
 			"name": "worldRotDir",
 			"type": "number",
 			"initialValue": "1",
@@ -60,16 +68,6 @@
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 940997749013897
-		},
-		{
-			"eventType": "variable",
-			"name": "beatCount",
-			"type": "number",
-			"initialValue": "0",
-			"comment": "counts up the number of beats that have occured",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 118038297132143
 		},
 		{
 			"eventType": "variable",
@@ -83,16 +81,6 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "BPM",
-			"type": "number",
-			"initialValue": "130",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 727715561836346
-		},
-		{
-			"eventType": "variable",
 			"name": "level",
 			"type": "number",
 			"initialValue": "0",
@@ -100,16 +88,6 @@
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 878550733948568
-		},
-		{
-			"eventType": "variable",
-			"name": "worldRotSpeedMax",
-			"type": "number",
-			"initialValue": "25",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 131295635435028
 		},
 		{
 			"eventType": "variable",
@@ -160,15 +138,6 @@
 					}
 				},
 				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 994266447380691,
-					"parameters": {
-						"variable": "beat",
-						"value": "2/(BPM/60)"
-					}
-				},
-				{
 					"id": "start-timer",
 					"objectClass": "EnemySpawner",
 					"sid": 331935391066503,
@@ -195,37 +164,6 @@
 					"parameters": {
 						"control-scheme": "\"keyboard\"",
 						"player": "Self.WireFrom(\"player\")"
-					}
-				},
-				{
-					"id": "start-timer",
-					"objectClass": "TimerHandler",
-					"sid": 692418139252079,
-					"behaviorType": "Timer",
-					"parameters": {
-						"duration": "beat",
-						"type": "regular",
-						"tag": "\"beat\""
-					}
-				},
-				{
-					"id": "start-timer",
-					"objectClass": "TimerHandler",
-					"sid": 873308689852534,
-					"behaviorType": "Timer",
-					"parameters": {
-						"duration": "beat/2",
-						"type": "regular",
-						"tag": "\"half_beat\""
-					}
-				},
-				{
-					"id": "set-instvar-value",
-					"objectClass": "Player",
-					"sid": 888075685861014,
-					"parameters": {
-						"instance-variable": "speed",
-						"value": "Self.speed * (1.15/beat)"
 					}
 				},
 				{
@@ -861,31 +799,14 @@
 								}
 							],
 							"sid": 739777886515358
-						}
-					]
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "for-each",
-							"objectClass": "System",
-							"sid": 506492869686831,
-							"parameters": {
-								"object": "Player"
-							}
-						}
-					],
-					"actions": [],
-					"sid": 803293696929669,
-					"children": [
+						},
 						{
 							"eventType": "block",
 							"conditions": [
 								{
 									"id": "is-boolean-instance-variable-set",
 									"objectClass": "Player",
-									"sid": 504087401080874,
+									"sid": 913520349740657,
 									"parameters": {
 										"instance-variable": "clone"
 									}
@@ -895,7 +816,7 @@
 								{
 									"id": "add-to-eventvar",
 									"objectClass": "System",
-									"sid": 331375507742589,
+									"sid": 821896017868792,
 									"parameters": {
 										"variable": "i",
 										"value": "1"
@@ -904,7 +825,7 @@
 								{
 									"id": "set-instvar-value",
 									"objectClass": "Player",
-									"sid": 516436388403817,
+									"sid": 932939183131514,
 									"parameters": {
 										"instance-variable": "playerAngle",
 										"value": "actualAngle + (i * 90)"
@@ -913,7 +834,7 @@
 								{
 									"id": "set-angle",
 									"objectClass": "Player",
-									"sid": 540834072901968,
+									"sid": 736848668974421,
 									"parameters": {
 										"angle": "-Player.playerAngle"
 									}
@@ -921,14 +842,14 @@
 								{
 									"id": "set-position",
 									"objectClass": "Player",
-									"sid": 502335926403800,
+									"sid": 214055372005720,
 									"parameters": {
 										"x": "Center.X + cos(Player.playerAngle) * Player.radius",
 										"y": "Center.Y - sin(Player.playerAngle) * Player.radius"
 									}
 								}
 							],
-							"sid": 139000821497707
+							"sid": 271645509226764
 						}
 					]
 				}
@@ -980,10 +901,10 @@
 				{
 					"id": "add-to-instvar",
 					"objectClass": "Shield",
-					"sid": 295358900939128,
+					"sid": 860877607675222,
 					"parameters": {
 						"instance-variable": "spinSpeed",
-						"value": "dt * 80"
+						"value": "dt * 40"
 					}
 				},
 				{
@@ -1009,15 +930,6 @@
 					"sid": 913223001417091,
 					"parameters": {
 						"angle": "LayerAngle(0)"
-					}
-				},
-				{
-					"id": "add-to-instvar",
-					"objectClass": "BeatIndicator",
-					"sid": 262521260157399,
-					"parameters": {
-						"instance-variable": "timeSinceLastBeat",
-						"value": "Self.dt"
 					}
 				}
 			],
@@ -1884,10 +1796,9 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "on-timer",
-							"objectClass": "TimerHandler",
-							"sid": 348977479859151,
-							"behaviorType": "Timer",
+							"id": "on-signal",
+							"objectClass": "System",
+							"sid": 333398600831666,
 							"parameters": {
 								"tag": "\"half_beat\""
 							}
@@ -1907,10 +1818,10 @@
 						{
 							"id": "spawn-another-object",
 							"objectClass": "Player",
-							"sid": 247199578001728,
+							"sid": 666378910825028,
 							"parameters": {
 								"object": "Bullet",
-								"layer": "0",
+								"layer": "\"stage\"",
 								"image-point": "1",
 								"create-hierarchy": false,
 								"template-name": "\"\""
@@ -1959,10 +1870,9 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "on-timer",
-							"objectClass": "TimerHandler",
-							"sid": 119408608246817,
-							"behaviorType": "Timer",
+							"id": "on-signal",
+							"objectClass": "System",
+							"sid": 192066977324331,
 							"parameters": {
 								"tag": "\"beat\""
 							}
@@ -1987,17 +1897,7 @@
 							}
 						}
 					],
-					"actions": [
-						{
-							"id": "set-instvar-value",
-							"objectClass": "BeatIndicator",
-							"sid": 217937217018706,
-							"parameters": {
-								"instance-variable": "timeSinceLastBeat",
-								"value": "0"
-							}
-						}
-					],
+					"actions": [],
 					"sid": 687893816310408,
 					"children": [
 						{
@@ -2741,10 +2641,10 @@
 										{
 											"id": "create-object",
 											"objectClass": "System",
-											"sid": 787154000058406,
+											"sid": 862979921246047,
 											"parameters": {
 												"object-to-create": "BossTank",
-												"layer": "0",
+												"layer": "\"stage\"",
 												"x": "0",
 												"y": "1207",
 												"create-hierarchy": false,
@@ -2772,10 +2672,10 @@
 										{
 											"id": "create-object",
 											"objectClass": "System",
-											"sid": 706336225404976,
+											"sid": 607234018673894,
 											"parameters": {
 												"object-to-create": "EnemyBody",
-												"layer": "0",
+												"layer": "\"stage\"",
 												"x": "BossTank.X",
 												"y": "BossTank.Y",
 												"create-hierarchy": false,
@@ -2845,10 +2745,10 @@
 												{
 													"id": "create-object",
 													"objectClass": "System",
-													"sid": 884991877295993,
+													"sid": 578410505424897,
 													"parameters": {
 														"object-to-create": "BossRing",
-														"layer": "0",
+														"layer": "\"stage\"",
 														"x": "Center.X + (cos(11.25*i) * 400)",
 														"y": "Center.Y + (sin(11.25*i) * 400)",
 														"create-hierarchy": false,
@@ -2875,10 +2775,10 @@
 												{
 													"id": "create-object",
 													"objectClass": "System",
-													"sid": 112800357546763,
+													"sid": 782945227466907,
 													"parameters": {
 														"object-to-create": "EnemyBody",
-														"layer": "0",
+														"layer": "\"stage\"",
 														"x": "BossRing.X",
 														"y": "BossRing.Y",
 														"create-hierarchy": false,
@@ -2940,10 +2840,10 @@
 										{
 											"id": "create-object",
 											"objectClass": "System",
-											"sid": 762895943114526,
+											"sid": 259908228037497,
 											"parameters": {
 												"object-to-create": "BossFast",
-												"layer": "0",
+												"layer": "\"stage\"",
 												"x": "Center.X",
 												"y": "Center.Y + 700",
 												"create-hierarchy": false,
@@ -2964,10 +2864,10 @@
 										{
 											"id": "create-object",
 											"objectClass": "System",
-											"sid": 428780854032900,
+											"sid": 805420898042843,
 											"parameters": {
 												"object-to-create": "EnemyBody",
-												"layer": "0",
+												"layer": "\"stage\"",
 												"x": "BossFast.X",
 												"y": "BossFast.Y",
 												"create-hierarchy": false,
@@ -3061,10 +2961,10 @@
 												{
 													"id": "create-object",
 													"objectClass": "System",
-													"sid": 328184397595425,
+													"sid": 135796659625254,
 													"parameters": {
 														"object-to-create": "BossRingOL",
-														"layer": "0",
+														"layer": "\"stage\"",
 														"x": "Center.X + (cos(120*i) * 500)",
 														"y": "Center.Y + (sin(120*i) * 500)",
 														"create-hierarchy": false,
@@ -3074,10 +2974,10 @@
 												{
 													"id": "create-object",
 													"objectClass": "System",
-													"sid": 877856468751796,
+													"sid": 497949980118880,
 													"parameters": {
 														"object-to-create": "EnemyBody",
-														"layer": "0",
+														"layer": "\"stage\"",
 														"x": "BossRingOL.X",
 														"y": "BossRingOL.Y",
 														"create-hierarchy": false,
@@ -3229,10 +3129,10 @@
 										{
 											"id": "create-object",
 											"objectClass": "System",
-											"sid": 327500545572017,
+											"sid": 456402197904463,
 											"parameters": {
 												"object-to-create": "BossTankOL",
-												"layer": "0",
+												"layer": "\"stage\"",
 												"x": "Center.X",
 												"y": "Center.Y + 700",
 												"create-hierarchy": false,
@@ -3273,10 +3173,10 @@
 										{
 											"id": "create-object",
 											"objectClass": "System",
-											"sid": 905898858888490,
+											"sid": 472641548968746,
 											"parameters": {
 												"object-to-create": "EnemyBody",
-												"layer": "0",
+												"layer": "\"stage\"",
 												"x": "BossTankOL.X",
 												"y": "BossTankOL.Y",
 												"create-hierarchy": false,
@@ -3335,10 +3235,10 @@
 										{
 											"id": "create-object",
 											"objectClass": "System",
-											"sid": 853856408737370,
+											"sid": 276186252380833,
 											"parameters": {
 												"object-to-create": "BossFastOL",
-												"layer": "0",
+												"layer": "\"stage\"",
 												"x": "Center.X",
 												"y": "Center.Y + 650",
 												"create-hierarchy": false,
@@ -3348,10 +3248,10 @@
 										{
 											"id": "create-object",
 											"objectClass": "System",
-											"sid": 261359912604683,
+											"sid": 666196993082748,
 											"parameters": {
 												"object-to-create": "EnemyBody",
-												"layer": "0",
+												"layer": "\"stage\"",
 												"x": "BossFastOL.X",
 												"y": "BossFastOL.Y",
 												"create-hierarchy": false,
@@ -3429,10 +3329,10 @@
 										{
 											"id": "spawn-another-object",
 											"objectClass": "Player",
-											"sid": 913177583973727,
+											"sid": 543992949138456,
 											"parameters": {
 												"object": "BulletWide",
-												"layer": "0",
+												"layer": "\"stage\"",
 												"image-point": "1",
 												"create-hierarchy": false,
 												"template-name": "\"\""
@@ -3490,10 +3390,10 @@
 										{
 											"id": "spawn-another-object",
 											"objectClass": "Player",
-											"sid": 704376267522501,
+											"sid": 769572024052594,
 											"parameters": {
 												"object": "Bullet",
-												"layer": "0",
+												"layer": "\"stage\"",
 												"image-point": "1",
 												"create-hierarchy": false,
 												"template-name": "\"\""
@@ -3793,10 +3693,9 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "on-timer",
-							"objectClass": "TimerHandler",
-							"sid": 138309668795446,
-							"behaviorType": "Timer",
+							"id": "on-signal",
+							"objectClass": "System",
+							"sid": 162109574012106,
 							"parameters": {
 								"tag": "\"beat\""
 							}
@@ -3993,7 +3892,7 @@
 		{
 			"eventType": "group",
 			"disabled": false,
-			"title": "Input",
+			"title": "aimCorrection",
 			"description": "",
 			"isActiveOnStart": true,
 			"children": [
@@ -4001,333 +3900,75 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "key-is-down",
-							"objectClass": "Keyboard",
-							"sid": 497900695217581,
-							"parameters": {
-								"key": 65
-							}
-						},
-						{
-							"id": "key-is-down",
-							"objectClass": "Keyboard",
-							"sid": 672837362185302,
-							"parameters": {
-								"key": 81
-							}
-						},
-						{
-							"id": "key-is-down",
-							"objectClass": "Keyboard",
-							"sid": 110284075429979,
-							"parameters": {
-								"key": 37
-							}
-						},
-						{
-							"id": "is-touching-object",
-							"objectClass": "Touch",
-							"sid": 883710473841787,
-							"parameters": {
-								"object": "LeftRegion"
-							}
-						},
-						{
-							"id": "is-button-down",
-							"objectClass": "Gamepad",
-							"sid": 608120941299527,
-							"parameters": {
-								"gamepad": "0",
-								"button": "d-pad-left"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "SetDownInput",
+							"id": "OnUp",
 							"objectClass": "BetterInputManager",
-							"sid": 178261994320302,
+							"sid": 512129515142623,
 							"parameters": {
 								"name": "\"CCW\"",
-								"player": "Self.WireFrom(\"player\")",
-								"control-scheme": "\"keyboard\"",
-								"prevent-auto-switch": false
+								"player": "Self.WireFrom(\"player\")"
 							}
-						}
-					],
-					"sid": 278742622253159,
-					"isOrBlock": true
-				},
-				{
-					"eventType": "block",
-					"conditions": [
+						},
 						{
-							"id": "else",
-							"objectClass": "System",
-							"sid": 827820302520870
-						}
-					],
-					"actions": [
-						{
-							"id": "SetUpInput",
+							"id": "OnUp",
 							"objectClass": "BetterInputManager",
-							"sid": 345596422688151,
-							"parameters": {
-								"name": "\"CCW\"",
-								"player": "Self.WireFrom(\"player\")",
-								"control-scheme": "\"keyboard\""
-							}
-						}
-					],
-					"sid": 302035516906847
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "key-is-down",
-							"objectClass": "Keyboard",
-							"sid": 990137296520622,
-							"parameters": {
-								"key": 68
-							}
-						},
-						{
-							"id": "key-is-down",
-							"objectClass": "Keyboard",
-							"sid": 490471159522382,
-							"parameters": {
-								"key": 39
-							}
-						},
-						{
-							"id": "is-touching-object",
-							"objectClass": "Touch",
-							"sid": 513029633687068,
-							"parameters": {
-								"object": "RightRegion"
-							}
-						},
-						{
-							"id": "is-button-down",
-							"objectClass": "Gamepad",
-							"sid": 182610487193413,
-							"parameters": {
-								"gamepad": "0",
-								"button": "d-pad-right"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "SetDownInput",
-							"objectClass": "BetterInputManager",
-							"sid": 113921763289213,
+							"sid": 424213224393347,
 							"parameters": {
 								"name": "\"CW\"",
-								"player": "Self.WireFrom(\"player\")",
-								"control-scheme": "\"keyboard\"",
-								"prevent-auto-switch": false
+								"player": "Self.WireFrom(\"player\")"
 							}
 						}
 					],
-					"sid": 596359230100067,
+					"actions": [],
+					"sid": 927559117537331,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-by-highest-lowest-value",
+									"objectClass": "System",
+									"sid": 443057214157232,
+									"parameters": {
+										"object": "Enemy",
+										"which": "lowest",
+										"expression": "anglediff(-Player.playerAngle, angle(Planet.X, Planet.Y, Enemy.X, Enemy.Y))"
+									}
+								},
+								{
+									"id": "evaluate-expression",
+									"objectClass": "System",
+									"sid": 162345068789159,
+									"parameters": {
+										"value": "anglediff(-Player.playerAngle, angle(Planet.X, Planet.Y, Enemy.X, Enemy.Y)) < 6"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Player",
+									"sid": 847859367797505,
+									"parameters": {
+										"instance-variable": "playerAngle",
+										"value": "-angle(Planet.X, Planet.Y, Enemy.X, Enemy.Y)"
+									}
+								}
+							],
+							"sid": 800441824356466
+						}
+					],
 					"isOrBlock": true
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "else",
-							"objectClass": "System",
-							"sid": 797532596371401
-						}
-					],
-					"actions": [
-						{
-							"id": "SetUpInput",
-							"objectClass": "BetterInputManager",
-							"sid": 212789386594212,
-							"parameters": {
-								"name": "\"CW\"",
-								"player": "Self.WireFrom(\"player\")",
-								"control-scheme": "\"keyboard\""
-							}
-						}
-					],
-					"sid": 404420593969973
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "key-is-down",
-							"objectClass": "Keyboard",
-							"sid": 290255818417337,
-							"parameters": {
-								"key": 27
-							}
-						},
-						{
-							"id": "is-button-down",
-							"objectClass": "Gamepad",
-							"sid": 770451089468178,
-							"parameters": {
-								"gamepad": "0",
-								"button": "button-b"
-							}
-						},
-						{
-							"id": "is-touching-object",
-							"objectClass": "Touch",
-							"sid": 307760971171908,
-							"parameters": {
-								"object": "BackRegion"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "SetDownInput",
-							"objectClass": "BetterInputManager",
-							"sid": 715118934198568,
-							"parameters": {
-								"name": "\"back\"",
-								"player": "Self.WireFrom(\"player\")",
-								"control-scheme": "\"keyboard\"",
-								"prevent-auto-switch": false
-							}
-						}
-					],
-					"sid": 923048843286994,
-					"isOrBlock": true
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "else",
-							"objectClass": "System",
-							"sid": 155556865464714
-						}
-					],
-					"actions": [
-						{
-							"id": "SetUpInput",
-							"objectClass": "BetterInputManager",
-							"sid": 653054368072692,
-							"parameters": {
-								"name": "\"back\"",
-								"player": "Self.WireFrom(\"player\")",
-								"control-scheme": "\"keyboard\""
-							}
-						}
-					],
-					"sid": 553315791286842
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "key-is-down",
-							"objectClass": "Keyboard",
-							"sid": 939486769367583,
-							"parameters": {
-								"key": 32
-							}
-						},
-						{
-							"id": "key-is-down",
-							"objectClass": "Keyboard",
-							"sid": 333897319134011,
-							"parameters": {
-								"key": 69
-							}
-						},
-						{
-							"id": "is-touching-object",
-							"objectClass": "Touch",
-							"sid": 306982524650356,
-							"parameters": {
-								"object": "CenterRegion"
-							}
-						},
-						{
-							"id": "is-button-down",
-							"objectClass": "Gamepad",
-							"sid": 323657810514072,
-							"parameters": {
-								"gamepad": "0",
-								"button": "button-a"
-							}
-						},
-						{
-							"id": "is-button-down",
-							"objectClass": "Gamepad",
-							"sid": 929106784533613,
-							"parameters": {
-								"gamepad": "0",
-								"button": "button-x"
-							}
-						},
-						{
-							"id": "is-button-down",
-							"objectClass": "Gamepad",
-							"sid": 181523845478246,
-							"parameters": {
-								"gamepad": "0",
-								"button": "button-y"
-							}
-						},
-						{
-							"id": "is-button-down",
-							"objectClass": "Gamepad",
-							"sid": 297593463721730,
-							"parameters": {
-								"gamepad": "0",
-								"button": "start-menu"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "SetDownInput",
-							"objectClass": "BetterInputManager",
-							"sid": 528517491004926,
-							"parameters": {
-								"name": "\"action\"",
-								"player": "Self.WireFrom(\"player\")",
-								"control-scheme": "\"\"",
-								"prevent-auto-switch": false
-							}
-						}
-					],
-					"sid": 248800972230199,
-					"isOrBlock": true
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "else",
-							"objectClass": "System",
-							"sid": 188856717969558
-						}
-					],
-					"actions": [
-						{
-							"id": "SetUpInput",
-							"objectClass": "BetterInputManager",
-							"sid": 337917257223650,
-							"parameters": {
-								"name": "\"action\"",
-								"player": "Self.WireFrom(\"player\")",
-								"control-scheme": "\"\""
-							}
-						}
-					],
-					"sid": 602101512720103
-				},
+				}
+			],
+			"sid": 563356516069481
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Input",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
 				{
 					"eventType": "block",
 					"conditions": [
@@ -5401,9 +5042,9 @@
 					],
 					"actions": [
 						{
-							"id": "destroy",
+							"customAction": "queueDestruction",
 							"objectClass": "Enemy",
-							"sid": 456959600201128
+							"sid": 997061191043390
 						}
 					],
 					"sid": 238182393227846,
@@ -5509,10 +5150,10 @@
 								{
 									"id": "create-object",
 									"objectClass": "System",
-									"sid": 621020567460055,
+									"sid": 196380370722129,
 									"parameters": {
 										"object-to-create": "Shield",
-										"layer": "0",
+										"layer": "\"stage\"",
 										"x": "Center.X",
 										"y": "Center.Y",
 										"create-hierarchy": false,
@@ -5561,9 +5202,9 @@
 							],
 							"actions": [
 								{
-									"id": "destroy",
+									"customAction": "queueDestruction",
 									"objectClass": "Enemy",
-									"sid": 104853524163596
+									"sid": 321365234899391
 								}
 							],
 							"sid": 362467749509320
@@ -5668,13 +5309,13 @@
 												{
 													"id": "create-object",
 													"objectClass": "System",
-													"sid": 672658579240502,
+													"sid": 838505562503583,
 													"parameters": {
 														"object-to-create": "Player",
-														"layer": "0",
+														"layer": "\"stage\"",
 														"x": "0",
 														"y": "0",
-														"create-hierarchy": false,
+														"create-hierarchy": true,
 														"template-name": "\"\""
 													}
 												},
@@ -5763,9 +5404,9 @@
 					],
 					"actions": [
 						{
-							"id": "destroy",
+							"customAction": "queueDestruction",
 							"objectClass": "Enemy",
-							"sid": 936958579152752
+							"sid": 391975046329690
 						},
 						{
 							"callFunction": "bulletHit",
@@ -5875,10 +5516,10 @@
 								{
 									"id": "create-object",
 									"objectClass": "System",
-									"sid": 971664487376858,
+									"sid": 757940427203137,
 									"parameters": {
 										"object-to-create": "Shield",
-										"layer": "0",
+										"layer": "\"stage\"",
 										"x": "Center.X",
 										"y": "Center.Y",
 										"create-hierarchy": false,
@@ -6034,13 +5675,13 @@
 												{
 													"id": "create-object",
 													"objectClass": "System",
-													"sid": 198331465672171,
+													"sid": 827537405532166,
 													"parameters": {
 														"object-to-create": "Player",
-														"layer": "0",
+														"layer": "\"stage\"",
 														"x": "0",
 														"y": "0",
-														"create-hierarchy": false,
+														"create-hierarchy": true,
 														"template-name": "\"\""
 													}
 												},
@@ -6536,9 +6177,9 @@
 					],
 					"actions": [
 						{
-							"id": "destroy",
+							"customAction": "queueDestruction",
 							"objectClass": "Enemy",
-							"sid": 950351738347475
+							"sid": 858351580099655
 						}
 					],
 					"sid": 157164693088341
@@ -7129,10 +6770,10 @@
 						{
 							"id": "create-object",
 							"objectClass": "System",
-							"sid": 974152533822952,
+							"sid": 908661796279114,
 							"parameters": {
 								"object-to-create": "Enemy",
-								"layer": "0",
+								"layer": "\"stage\"",
 								"x": "Center.X + cos(EnemySpawner.spawnAngle) * EnemySpawner.spawnRadius",
 								"y": "Center.Y + sin(EnemySpawner.spawnAngle) * EnemySpawner.spawnRadius",
 								"create-hierarchy": false,
@@ -7168,10 +6809,10 @@
 						{
 							"id": "create-object",
 							"objectClass": "System",
-							"sid": 124180255095337,
+							"sid": 808896820243589,
 							"parameters": {
 								"object-to-create": "EnemyFace",
-								"layer": "0",
+								"layer": "\"stage\"",
 								"x": "Enemy.X",
 								"y": "Enemy.Y",
 								"create-hierarchy": false,
@@ -7515,10 +7156,10 @@
 								{
 									"id": "create-object",
 									"objectClass": "System",
-									"sid": 469642626499535,
+									"sid": 153081246861114,
 									"parameters": {
 										"object-to-create": "Enemy",
-										"layer": "0",
+										"layer": "\"stage\"",
 										"x": "Center.X + cos(newAngle) * EnemySpawner.spawnRadius",
 										"y": "Center.Y + sin(newAngle) * EnemySpawner.spawnRadius",
 										"create-hierarchy": false,
@@ -7554,10 +7195,10 @@
 								{
 									"id": "create-object",
 									"objectClass": "System",
-									"sid": 998044637154063,
+									"sid": 800139707511832,
 									"parameters": {
 										"object-to-create": "EnemyFace",
-										"layer": "0",
+										"layer": "\"stage\"",
 										"x": "Enemy.X",
 										"y": "Enemy.Y",
 										"create-hierarchy": false,
@@ -7616,10 +7257,10 @@
 								{
 									"id": "create-object",
 									"objectClass": "System",
-									"sid": 731126930863082,
+									"sid": 164520030804656,
 									"parameters": {
 										"object-to-create": "Enemy",
-										"layer": "0",
+										"layer": "\"stage\"",
 										"x": "Center.X + cos(newAngle) * EnemySpawner.spawnRadius",
 										"y": "Center.Y + sin(newAngle) * EnemySpawner.spawnRadius",
 										"create-hierarchy": false,
@@ -7655,10 +7296,10 @@
 								{
 									"id": "create-object",
 									"objectClass": "System",
-									"sid": 319419698810019,
+									"sid": 147495908781397,
 									"parameters": {
 										"object-to-create": "EnemyFace",
-										"layer": "0",
+										"layer": "\"stage\"",
 										"x": "Enemy.X",
 										"y": "Enemy.Y",
 										"create-hierarchy": false,
@@ -7792,10 +7433,10 @@
 								{
 									"id": "create-object",
 									"objectClass": "System",
-									"sid": 432338462337921,
+									"sid": 268798395677004,
 									"parameters": {
 										"object-to-create": "Enemy",
-										"layer": "0",
+										"layer": "\"stage\"",
 										"x": "Center.X + cos(newAngle) * EnemySpawner.spawnRadius",
 										"y": "Center.Y + sin(newAngle) * EnemySpawner.spawnRadius",
 										"create-hierarchy": false,
@@ -7831,10 +7472,10 @@
 								{
 									"id": "create-object",
 									"objectClass": "System",
-									"sid": 949912398222381,
+									"sid": 386997722240049,
 									"parameters": {
 										"object-to-create": "EnemyFace",
-										"layer": "0",
+										"layer": "\"stage\"",
 										"x": "Enemy.X",
 										"y": "Enemy.Y",
 										"create-hierarchy": false,
@@ -7893,10 +7534,10 @@
 								{
 									"id": "create-object",
 									"objectClass": "System",
-									"sid": 721460001619652,
+									"sid": 498889718425775,
 									"parameters": {
 										"object-to-create": "Enemy",
-										"layer": "0",
+										"layer": "\"stage\"",
 										"x": "Center.X + cos(newAngle) * EnemySpawner.spawnRadius",
 										"y": "Center.Y + sin(newAngle) * EnemySpawner.spawnRadius",
 										"create-hierarchy": false,
@@ -7932,10 +7573,10 @@
 								{
 									"id": "create-object",
 									"objectClass": "System",
-									"sid": 210567274726196,
+									"sid": 897474743805602,
 									"parameters": {
 										"object-to-create": "EnemyFace",
-										"layer": "0",
+										"layer": "\"stage\"",
 										"x": "Enemy.X",
 										"y": "Enemy.Y",
 										"create-hierarchy": false,
@@ -7994,10 +7635,10 @@
 								{
 									"id": "create-object",
 									"objectClass": "System",
-									"sid": 114317139027441,
+									"sid": 814143300404722,
 									"parameters": {
 										"object-to-create": "Enemy",
-										"layer": "0",
+										"layer": "\"stage\"",
 										"x": "Center.X + cos(newAngle) * EnemySpawner.spawnRadius",
 										"y": "Center.Y + sin(newAngle) * EnemySpawner.spawnRadius",
 										"create-hierarchy": false,
@@ -8033,10 +7674,10 @@
 								{
 									"id": "create-object",
 									"objectClass": "System",
-									"sid": 537622261188416,
+									"sid": 203643072665009,
 									"parameters": {
 										"object-to-create": "EnemyFace",
-										"layer": "0",
+										"layer": "\"stage\"",
 										"x": "Enemy.X",
 										"y": "Enemy.Y",
 										"create-hierarchy": false,
@@ -8537,10 +8178,10 @@
 								{
 									"id": "create-object",
 									"objectClass": "System",
-									"sid": 709752250801924,
+									"sid": 614116987779613,
 									"parameters": {
 										"object-to-create": "Check",
-										"layer": "0",
+										"layer": "\"stage\"",
 										"x": "Center.X",
 										"y": "Center.Y",
 										"create-hierarchy": false,
@@ -8779,10 +8420,10 @@
 				{
 					"id": "create-object",
 					"objectClass": "System",
-					"sid": 542873885492541,
+					"sid": 663092540869809,
 					"parameters": {
 						"object-to-create": "EmptyShell",
-						"layer": "0",
+						"layer": "\"stage\"",
 						"x": "Bullet.X",
 						"y": "Bullet.Y",
 						"create-hierarchy": false,
@@ -8847,10 +8488,10 @@
 				{
 					"id": "create-object",
 					"objectClass": "System",
-					"sid": 637889426165028,
+					"sid": 400563569519322,
 					"parameters": {
 						"object-to-create": "EmptyShell",
-						"layer": "0",
+						"layer": "\"stage\"",
 						"x": "BulletWide.X",
 						"y": "BulletWide.Y",
 						"create-hierarchy": false,
@@ -8897,6 +8538,146 @@
 			],
 			"sid": 440866779088586,
 			"isOrBlock": true
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "enemyBody",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-signal",
+							"objectClass": "System",
+							"sid": 500713790680265,
+							"parameters": {
+								"tag": "\"half_beat\""
+							}
+						},
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Enemy",
+							"sid": 787241869977605,
+							"parameters": {
+								"instance-variable": "isDead"
+							}
+						}
+					],
+					"actions": [
+						{
+							"customAction": "destroyWithEffects",
+							"objectClass": "Enemy",
+							"sid": 843765924148591
+						}
+					],
+					"sid": 174056083429741
+				},
+				{
+					"aceType": "action",
+					"aceName": "queueDestruction",
+					"objectClass": "Enemy",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "custom-ace-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-collisions-enabled",
+							"objectClass": "Enemy",
+							"sid": 281621217745300,
+							"parameters": {
+								"collisions": "disabled"
+							}
+						},
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Enemy",
+							"sid": 555788158236356,
+							"parameters": {
+								"instance-variable": "isDead",
+								"value": "true"
+							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "Enemy",
+							"sid": 193677717454494,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "-Self.Bullet.Speed"
+							}
+						},
+						{
+							"id": "set-effect-enabled",
+							"objectClass": "Enemy",
+							"sid": 206652901275230,
+							"parameters": {
+								"mode": "enable",
+								"effect": "\"SetColor\""
+							}
+						}
+					],
+					"sid": 676467281312111
+				},
+				{
+					"aceType": "action",
+					"aceName": "destroyWithEffects",
+					"objectClass": "Enemy",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "custom-ace-block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 992427234412727,
+							"parameters": {
+								"object": "Enemy"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "Enemy",
+							"sid": 752398979059278
+						},
+						{
+							"id": "spawn-another-object",
+							"objectClass": "Enemy",
+							"sid": 197399717078547,
+							"parameters": {
+								"object": "enemyDeathParticles",
+								"layer": "Enemy.LayerNumber",
+								"image-point": "0",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-default-color",
+							"objectClass": "enemyDeathParticles",
+							"sid": 841185642014396,
+							"parameters": {
+								"color": "Enemy.ColorValue"
+							}
+						}
+					],
+					"sid": 651575818351738
+				}
+			],
+			"sid": 429400139702543
 		}
 	],
 	"sid": 907050544065206

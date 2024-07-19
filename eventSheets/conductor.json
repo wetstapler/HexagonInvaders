@@ -1,0 +1,216 @@
+{
+	"name": "conductor",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "beatCount",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "counts up the number of beats that have occured",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 544917907192374
+		},
+		{
+			"eventType": "variable",
+			"name": "beat",
+			"type": "number",
+			"initialValue": "0.46",
+			"comment": "time between beats",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 105348794650344
+		},
+		{
+			"eventType": "variable",
+			"name": "timeUntilNextBeat",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "in seconds",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 812351722385203
+		},
+		{
+			"eventType": "variable",
+			"name": "timeUntilNextHalfBeat",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "in seconds",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 591126228098817
+		},
+		{
+			"eventType": "variable",
+			"name": "BPM",
+			"type": "number",
+			"initialValue": "130",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 727715561836346
+		},
+		{
+			"eventType": "comment",
+			"text": "making interface more independent of implementation. Important as this will need a refactor down the line to be less prone to desync"
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "conductor",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 167262863321953,
+							"parameters": {
+								"variable": "timeUntilNextBeat",
+								"value": "beat - TimerHandler.Timer.CurrentTime(\"beat\")"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 365898699661744,
+							"parameters": {
+								"variable": "timeUntilNextBeat",
+								"value": "beat / 2 - TimerHandler.Timer.CurrentTime(\"half_beat\")"
+							}
+						},
+						{
+							"id": "add-to-instvar",
+							"objectClass": "BeatIndicator",
+							"sid": 262521260157399,
+							"parameters": {
+								"instance-variable": "timeSinceLastBeat",
+								"value": "Self.dt"
+							}
+						}
+					],
+					"sid": 705542881423622
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-start-of-layout",
+							"objectClass": "System",
+							"sid": 235828451308796
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 877359620077530,
+							"parameters": {
+								"variable": "beat",
+								"value": "2/(BPM/60)"
+							}
+						},
+						{
+							"id": "start-timer",
+							"objectClass": "TimerHandler",
+							"sid": 906333777999544,
+							"behaviorType": "Timer",
+							"parameters": {
+								"duration": "beat",
+								"type": "regular",
+								"tag": "\"beat\""
+							}
+						},
+						{
+							"id": "start-timer",
+							"objectClass": "TimerHandler",
+							"sid": 539702278072586,
+							"behaviorType": "Timer",
+							"parameters": {
+								"duration": "beat/2",
+								"type": "regular",
+								"tag": "\"half_beat\""
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 533939079201094,
+							"parameters": {
+								"instance-variable": "speed",
+								"value": "Self.speed * (1.15/beat)"
+							}
+						}
+					],
+					"sid": 478625066759475
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-timer",
+							"objectClass": "TimerHandler",
+							"sid": 468518635402503,
+							"behaviorType": "Timer",
+							"parameters": {
+								"tag": "\"beat\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "signal",
+							"objectClass": "System",
+							"sid": 549318194652671,
+							"parameters": {
+								"tag": "\"beat\""
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "BeatIndicator",
+							"sid": 217937217018706,
+							"parameters": {
+								"instance-variable": "timeSinceLastBeat",
+								"value": "0"
+							}
+						}
+					],
+					"sid": 396967260710706
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-timer",
+							"objectClass": "TimerHandler",
+							"sid": 624858878902815,
+							"behaviorType": "Timer",
+							"parameters": {
+								"tag": "\"half_beat\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "signal",
+							"objectClass": "System",
+							"sid": 408777737496223,
+							"parameters": {
+								"tag": "\"half_beat\""
+							}
+						}
+					],
+					"sid": 706383472194177
+				}
+			],
+			"sid": 750159504982830
+		}
+	],
+	"sid": 168739518150890
+}

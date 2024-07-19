@@ -20,6 +20,8 @@
 								"live-preview": false
 							},
 							"uid": 44,
+							"sid": 842951905968822,
+							"tags": "",
 							"instanceVariables": {},
 							"behaviors": {
 								"Tween": {
@@ -55,6 +57,8 @@
 								"live-preview": false
 							},
 							"uid": 42,
+							"sid": 500627856528956,
+							"tags": "",
 							"instanceVariables": {},
 							"behaviors": {},
 							"world": {
@@ -132,6 +136,8 @@
 						"read-aloud": false
 					},
 					"uid": 46,
+					"sid": 664624000878597,
+					"tags": "",
 					"instanceVariables": {},
 					"behaviors": {},
 					"world": {
@@ -182,6 +188,10 @@
 			"global": false
 		}
 	],
+	"scene-graphs-folder-root": {
+		"items": [],
+		"subfolders": []
+	},
 	"sid": 110404597666250,
 	"nonworld-instances": [],
 	"effectTypes": [],
